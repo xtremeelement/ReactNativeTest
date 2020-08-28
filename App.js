@@ -1,11 +1,43 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 export default function App() {
+
+const [password, setPassword] = useState("")
+const [username, setUsername] = useState("")
+
+const handlePassword = (text) =>{
+  console.log(text);
+  setPassword(text);
+  console.log(password)
+;}
+
+const handleUsername = (text) =>{
+  console.log(text);
+  setUsername(text);
+  console.log(username)
+}
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>Hello World!</Text>
+      <View style={styles.input_fields}>
+      <Text>Username</Text>
+      <TextInput 
+      onChangeText={(text)=>handleUsername(text)}
+      placeholder="username" 
+      id style={styles.text_input}
+      />
+      </View>
+      <View style={styles.input_fields}>
+      <Text>Password</Text>
+      <TextInput 
+      secureTextEntry={true} 
+      onChangeText={(text)=>{handlePassword(text)}}
+      placeholder="password" 
+      style={styles.text_input}/>
+      </View>
+      <Button title="Submit" onPress={()=>{handlePassword}}/>
       <StatusBar style="auto" />
     </View>
   );
@@ -18,4 +50,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  text_input: {
+    borderWidth: 1,
+    borderColor: 'gray',
+    height: 40,
+    width: 200,
+    textAlign: "center"
+  },
+  input_fields:{
+    display: "flex",
+    flexDirection:"row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: 275,
+    marginTop: 20
+  }
 });
