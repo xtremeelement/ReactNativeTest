@@ -20,7 +20,7 @@ const handleUsername = (text) =>{
 }
   return (
     <View style={styles.container}>
-      <Text>Hello World!</Text>
+      <Text>Please Log in</Text>
       <View style={styles.input_fields}>
       <Text>Username</Text>
       <TextInput 
@@ -38,6 +38,8 @@ const handleUsername = (text) =>{
       style={styles.text_input}/>
       </View>
       <Button title="Submit" onPress={()=>{handlePassword}}/>
+      <Text style={styles.usertext}>{username}</Text>
+      <Text style={styles.usertext}>{password}</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -64,5 +66,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: 275,
     marginTop: 20
+  },
+  usertext:{
+    borderWidth: 1,
+    borderColor: 'gray',
+    height: 40,
+    width: 200,
+    borderRadius: 5,
+    marginBottom: 5
   }
 });
