@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, FlatList } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, FlatList, TouchableOpacity } from 'react-native';
 
 export default function App() {
 
@@ -14,6 +14,10 @@ useEffect(()=>{
   .then(response => response.json())
   .then(json => setUsers(json));
 },[])
+
+const pressedButton = (id) => {
+  alert(`pressed item: ${id}`)
+}
 
 const handlePassword = (text) =>{
   console.log(text);
@@ -52,11 +56,11 @@ const handleUsername = (text) =>{
       keyExtractor={(item)=> item.id}
         data={users}
         renderItem={({item}) => (
-          <View style={styles.usertext}>
+          <TouchableOpacity style={styles.usertext} onPress={()=>pressedButton(item.id)}>
             <Text>{item.name}</Text>
             <Text>{item.username}</Text>
             <Text>{item.email}</Text>
-          </View>
+          </TouchableOpacity>
         )}
       />
       <StatusBar style="auto" />
